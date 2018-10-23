@@ -2,8 +2,62 @@
 title: "About"
 ---
 
-### About this site
 
-Sometimes you need to say a bit about the site -- how it was made, where it's hosted, where the source code can be found. 
+Mengran Ma
+Phone: +1(415) 767-9858 | Email: ma211@purdue.edu,
+Purdue University, 610 Purdue Mall, West Lafayette, IN, 47906
 
-If this is for a project or analysis, I recommend giving some details about the R package versions that you used to create the content.
+##EDUCATION
+
+Purdue University-West Lafayette, IN, 47906                                                   08/2013-05/2018                                                                                                      
+  * Double BS expected in May 2018
+  * First Major: Biochemistry, Minor: Biological Sciences, Second Major: Applied Statistics
+  * Dean’s List: Every Semester from Fall 2013 to Spring 2017, Fall 2017
+  * Semester Honors: Fall 2013-Spring 2014, Spring 2015, Fall 2016, Spring 2017, Fall 2017
+  * Upper Level Graduate Courses: BCHM 56100 General Biochemistry I and BCHM 56200 General Biochemistry II,                   STAT51200 Applied Regression Analysis, STAT 51300 Statistical Quality Control, STAT 51400 Design of Experiments
+
+##RESEARCH PROJECTS
+
+####Net Voices for Food (a Large-scale Six-state, Federally Funded Research)                           08/2017-05/2018
+Position: Research lab undergraduate assistant  
+Lab Supervisor: Dr. Heather A. Eicher-Miller, Dept of Nutrition Science/Director, Indiana’s Emergency Food Resource Network
+  •	Project aim: to address food security in isolated communities known as “food deserts”
+  •	Engaged in data collection, data entry, and data analysis
+  •	Conducted questionnaires and surveys to clients who visit local Indiana food pantries, in person and through phone        calls
+  •	Gained practical application of research, knowledge of public health and food insecurity
+
+####Cigarette Dataset Analysis                                                          03/2016-04/2016
+Supervisor: Dr. Heejung Shim, STAT 512 Final Group Project
+  •	Project aim: to predict and analyze the variables, plot the data, and perform the regressions
+  •	Utilized SAS, chose predictor and performed a piecewise SLR to model the relationship with the response variable
+  •	Run the regression to predict the response using the explanatory variables and constructed the F-statistics
+  •	Summarized the result by giving the percentage of variation explained (R2) by each mode
+
+####Purification and Characterization of Cdc14 Phosphatase, and Enzymatic Properties aid in Identification & Development of Inhibitors as Anti-fungal agents                                                           01/2016-04/2016
+Supervisor: Dr. Andy W. Tao	
+  •	Purified and characterized the Cdc14 ortholog by using E. coli to overexpress the protein
+  •	Utilized bioinformatics models and tools to study the structure and properties of Cdc14 protein Enzymes, and analyzed     the inhibitory factor of this proteinase
+  •	Analyzed Michaelis-Menten plots at different inhibitor concentrations, including Kcat and Km for Inhibitor ChemBridge     Compound 5224815 Mechanism Analysis
+  •	Analyzed the composition and the proportion of secondary structural predicted by using GOR & SOPMA indicated through a     computer generated model
+
+####National Research Center for Veterinary Medicine-Pulike Biological Engineering, Inc., CN                 06-08/2016
+Internship, Supervisor: Dr. Yonghong Liao, Director of Research Institute of animal vaccine  
+  •	Performed clinical trials, virus injection, and blood collection and testing, Monitored clinical manifestation and        symptoms
+  •	Conducted virus plasmid DNA extraction & purification, PCR, restriction enzyme digestion
+
+####Characterization of Peroxidase Amount in Plants: Monocots vs. Dicots                                  10-11/2015
+Supervisor: Dr. John N. Anderson
+  •	Project aims: to discover which type of plant, beets, a dicot, or garlic, a monocot, has more active peroxidase and       which characteristics the peroxidase isoenzymes contain
+  •	Performed tissue printing experiment, electrophoresis experiment, spectrophotometric determination experiment
+
+##TEACHING & EXTRACURRICULAR ACTIVITIES
+IELTS Teaching Assistant at Dahua IELTS of Foreign Language School Luoyang, Henan, China          06 -08/2013 & 2014
+  •	Offered one to one oral practice with each student, and Prepared students with oral speaking tips and useful phrases
+  •	Facilitated instructors’ teaching and helped students to gain a better understanding of the materials
+Student Ambassador of Purdue University Exploratory Studies                                               Fall 2014-Spring 2016
+  •	Introduced exploratory studies, life, transfer major of Purdue for high school students and their parents
+  •	Engaged in public speaking, shared my own views, feelings, experience on the above
+ 
+##TESTS & SKILLS
+  * Language Skills: Chinese, proficient; English, proficient; French, elementary
+  * Computer Skills: SAS, Python, R language    
