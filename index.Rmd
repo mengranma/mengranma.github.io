@@ -2,6 +2,6 @@
 title: "Mengran Ma Personal Website"
 ---
 
-### I have a webpage!
+### A brief introductory landing page
 
 Having been devoting myself to professional studies and research projects of biochemistry, applied statistics, and biological sciences at Purdue University, I have substantially enhanced my intellectual interest and sharpened my competence in biostatistics. To become an exceptional researcher in the field of statistical genetics, I strive to pursue the most advanced education in your quality MS in Biostatistics at Columbia University and pursue the statistical genetics track, since I do consider myself as a well-qualified candidate with proven intellectual capacity, stalwart academic background, substantive professional experience, and a highly motivated spirit. 

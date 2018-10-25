@@ -1,0 +1,95 @@
+---
+title: "mengranma.github.io"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(p8105.datasets)
+library(ggridges)
+library(hexbin)
+library(plotly)
+library(patchwork)
+```
+
+```{r}
+data(ny_noaa)
+noaa_data = janitor::clean_names(ny_noaa)
+#Create separate variables for year, month, and day.
+New_noaa_data = mutate(noaa_data, noaa_data$date, year = as.integer(format(noaa_data$date, format = "%Y")), month = as.integer(format(noaa_data$date, format = "%m")), day = as.integer(format(noaa_data$date, format = "%d")))
+
+#Ensure observations for temperature, precipitation, and snowfall are given in reasonable units.
+New_noaa_data = mutate(New_noaa_data,
+  tmax = as.numeric(tmax) / 10, 
+  tmin = as.numeric(tmin) / 10,
+  prcp = as.numeric(prcp) / 10
+)
+```
+
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+Jan_July_average = New_noaa_data %>%
+  select(id, prcp, snow, snwd, tmax, tmin, year, month, day) %>% 
+  filter(month == 1 | month == 7) %>% 
+  filter(!is.na(tmax) | !is.na(tmin))
+
+Jan_July_average %>% 
+  group_by(id, year, month) %>%
+  summarize(mean_tempmax = mean(as.numeric(tmax), na.rm = TRUE)) %>%
+  ggplot(aes(x = year, y = mean_tempmax, color = id)) + 
+    geom_point() + 
+    geom_line() +
+    labs(
+      title = "Average temperature in each station across years",
+      x = "Weather station ID",
+      y = "Mean Maxiumum temperature (°C)"
+      ) +
+  theme(axis.text.x = element_text(angle = 45, size = 10)) +
+  theme(legend.position = "none") +
+  facet_grid(~month)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+# (i) tmax vs tmin for the full dataset
+New_noaa_data %>% 
+  ggplot(aes(x = tmax, y = tmin)) + 
+    geom_hex() +
+    labs(
+        title = "Temperature plot",
+        x = "Maximum temperature (°C)",
+        y = "Minimum temperature (°C)"
+      ) +
+  theme(axis.text.x = element_text(angle = 45, size = 6))
+```
+
+### Chart C
+
+```{r}
+New_noaa_data %>% 
+  mutate(year = as.character(year)) %>% 
+  filter(snow > 0 & snow < 100) %>%
+  ggplot(aes(x = snow, y = year)) + 
+    geom_density_ridges(scale = .9, alpha = .5) +
+    labs(
+      title = "Distribution of snowfall among different years",
+      x = "Snowfall values",
+      y = "Distribution of snowfall within each year"
+    )
+
+```
+

@@ -11,7 +11,7 @@
 
 
 
-<title>Mengran Ma Personal Website</title>
+<title>mengranma.github.io</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -213,14 +213,81 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Mengran Ma Personal Website</h1>
+<h1 class="title toc-ignore">mengranma.github.io</h1>
 
 </div>
 
 
-<div id="a-brief-introductory-landing-page" class="section level3">
-<h3>A brief introductory landing page</h3>
-<p>Having been devoting myself to professional studies and research projects of biochemistry, applied statistics, and biological sciences at Purdue University, I have substantially enhanced my intellectual interest and sharpened my competence in biostatistics. To become an exceptional researcher in the field of statistical genetics, I strive to pursue the most advanced education in your quality MS in Biostatistics at Columbia University and pursue the statistical genetics track, since I do consider myself as a well-qualified candidate with proven intellectual capacity, stalwart academic background, substantive professional experience, and a highly motivated spirit.</p>
+<pre class="r"><code>data(ny_noaa)
+noaa_data = janitor::clean_names(ny_noaa)
+#Create separate variables for year, month, and day.
+New_noaa_data = mutate(noaa_data, noaa_data$date, year = as.integer(format(noaa_data$date, format = &quot;%Y&quot;)), month = as.integer(format(noaa_data$date, format = &quot;%m&quot;)), day = as.integer(format(noaa_data$date, format = &quot;%d&quot;)))
+
+#Ensure observations for temperature, precipitation, and snowfall are given in reasonable units.
+New_noaa_data = mutate(New_noaa_data,
+  tmax = as.numeric(tmax) / 10, 
+  tmin = as.numeric(tmin) / 10,
+  prcp = as.numeric(prcp) / 10
+)</code></pre>
+<div id="column" class="section level2" data-width="650">
+<h2>Column</h2>
+<div id="chart-a" class="section level3">
+<h3>Chart A</h3>
+<pre class="r"><code>Jan_July_average = New_noaa_data %&gt;%
+  select(id, prcp, snow, snwd, tmax, tmin, year, month, day) %&gt;% 
+  filter(month == 1 | month == 7) %&gt;% 
+  filter(!is.na(tmax) | !is.na(tmin))
+
+Jan_July_average %&gt;% 
+  group_by(id, year, month) %&gt;%
+  summarize(mean_tempmax = mean(as.numeric(tmax), na.rm = TRUE)) %&gt;%
+  ggplot(aes(x = year, y = mean_tempmax, color = id)) + 
+    geom_point() + 
+    geom_line() +
+    labs(
+      title = &quot;Average temperature in each station across years&quot;,
+      x = &quot;Weather station ID&quot;,
+      y = &quot;Mean Maxiumum temperature (°C)&quot;
+      ) +
+  theme(axis.text.x = element_text(angle = 45, size = 10)) +
+  theme(legend.position = &quot;none&quot;) +
+  facet_grid(~month)</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<p><img src="dashboard_template_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+</div>
+<div id="column-1" class="section level2" data-width="350">
+<h2>Column</h2>
+<div id="chart-b" class="section level3">
+<h3>Chart B</h3>
+<pre class="r"><code># (i) tmax vs tmin for the full dataset
+New_noaa_data %&gt;% 
+  ggplot(aes(x = tmax, y = tmin)) + 
+    geom_hex() +
+    labs(
+        title = &quot;Temperature plot&quot;,
+        x = &quot;Maximum temperature (°C)&quot;,
+        y = &quot;Minimum temperature (°C)&quot;
+      ) +
+  theme(axis.text.x = element_text(angle = 45, size = 6))</code></pre>
+<pre><code>## Warning: Removed 1136276 rows containing non-finite values (stat_binhex).</code></pre>
+<p><img src="dashboard_template_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="chart-c" class="section level3">
+<h3>Chart C</h3>
+<pre class="r"><code>New_noaa_data %&gt;% 
+  mutate(year = as.character(year)) %&gt;% 
+  filter(snow &gt; 0 &amp; snow &lt; 100) %&gt;%
+  ggplot(aes(x = snow, y = year)) + 
+    geom_density_ridges(scale = .9, alpha = .5) +
+    labs(
+      title = &quot;Distribution of snowfall among different years&quot;,
+      x = &quot;Snowfall values&quot;,
+      y = &quot;Distribution of snowfall within each year&quot;
+    )</code></pre>
+<pre><code>## Picking joint bandwidth of 3.76</code></pre>
+<p><img src="dashboard_template_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
 </div>
 
 

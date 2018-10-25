@@ -1,7 +1,7 @@
 name: "For internet!"
 output_dir: "."
 navbar:
-  title: "Mengran Ma Personal Website"
+  title: "Home"
   right:
     - text: "About"
       href: about.html
@@ -9,5 +9,7 @@ navbar:
       href: mailto:<mm5354@cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: http://github.com/mengranma/
+    - text: "Linkedin"
+      href: https://www.linkedin.com/in/mengran-lynn-梦然-ma-马
 output:
   html_document
