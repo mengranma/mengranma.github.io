@@ -18,6 +18,9 @@ library(patchwork)
 ```
 
 ```{r data_manipulating}
+set.seed(1)
+
+
 data(ny_noaa)
 noaa_data = janitor::clean_names(ny_noaa)
 #Create separate variables for year, month, and day.
@@ -44,7 +47,7 @@ Jan_July_average = New_noaa_data %>%
   filter(!is.na(tmax) | !is.na(tmin))
 
 plot1 = Jan_July_average %>% 
-  sample_n(1000) %>% 
+  sample_n(10000) %>% 
   group_by(id, year, month) %>%
   summarize(mean_tempmax = mean(as.numeric(tmax), na.rm = TRUE)) %>%
   ggplot(aes(x = year, y = mean_tempmax, color = id, alpha = 0.5)) + 
@@ -70,6 +73,7 @@ Column {data-width=400}
 ```{r plotly_graph_2}
 # (i) tmax vs tmin for the full dataset
 plot2 = New_noaa_data %>% 
+  sample_n(10000) %>%
   ggplot(aes(x = tmax, y = tmin)) + 
     geom_hex() +
     labs(
@@ -86,10 +90,11 @@ ggplotly(plot2)
 
 ```{r plotly_graph_3}
 plot3 = New_noaa_data %>% 
-  mutate(year = as.character(year)) %>% 
+  mutate(year = as.factor(year)) %>% 
   filter(snow > 0 & snow < 100) %>%
+  sample_n(5000) %>%
   mutate(year = fct_reorder(year, snow)) %>%
-  ggplot(aes(x = year, y = snow)) + 
+  ggplot(aes(x = year, y = snow, color = year)) + 
     geom_boxplot(alpha = .5) +
     labs(
       title = "Distribution of snowfall among different years",
