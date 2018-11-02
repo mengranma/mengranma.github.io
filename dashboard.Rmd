@@ -35,7 +35,7 @@ New_noaa_data = mutate(New_noaa_data,
 Column {data-width=600}
 -----------------------------------------------------------------------
 
-### Average temperature for January in each station across years
+### Average max temperatures for January across years/various stations for a random sample of size 500
 
 ```{r plotly_graph_1}
 Jan_average = New_noaa_data %>%
@@ -44,11 +44,14 @@ Jan_average = New_noaa_data %>%
   filter(!is.na(tmax) | !is.na(tmin))
 
 plot1 = Jan_average %>% 
-  sample_n(100) %>% 
+  sample_n(500) %>% 
   group_by(id, year, month) %>%
   summarize(mean_max_temp = mean(as.numeric(tmax), na.rm = TRUE)) %>%
   mutate(text_label = str_c("Year: ", year, '\nAverage Maximum Temperature: ', mean_max_temp)) %>% 
-  plot_ly(x = ~year, y = ~mean_max_temp, type = 'bar', color = ~id, text = ~text_label) 
+  plot_ly(x = ~year, y = ~mean_max_temp, type = 'bar', color = ~id, text = ~text_label) %>% 
+  layout(title = "Average max temperatures on Jan across years/stations for a n=500 random sample",
+         yaxis = list(title = "Mean Maxiumum temperature (°C)"),
+         xaxis = list(title = "Year"))
 
 plot1
 ```
@@ -63,7 +66,10 @@ Column {data-width=400}
 plot2 = New_noaa_data %>% 
   sample_n(10000) %>%
   mutate(text_label = str_c("Maximum Temperature: ", tmax, '\nMinimum Temperature: ', tmin)) %>% 
-  plot_ly(x = ~tmax, y = ~tmin, type = "scatter", text = ~text_label, alpha = 0.5)
+  plot_ly(x = ~tmax, y = ~tmin, type = "scatter", text = ~text_label, alpha = 0.5) %>% 
+  layout(title = "Temperature plot for a random sample of size 10000",
+         yaxis = list(title = "Minimum temperature (°C)"),
+         xaxis = list(title = "Maximum temperature (°C)"))
 
 plot2
 ```
@@ -76,7 +82,10 @@ plot3 = New_noaa_data %>%
   filter(snow > 0 & snow < 100) %>%
   sample_n(5000) %>%
   mutate(year = fct_reorder(year, snow)) %>%
-  plot_ly(x = ~year, y = ~snow, type = "box")
+  plot_ly(x = ~year, y = ~snow, type = "box") %>% 
+  layout(title = "Distribution of snowfall among different years for a random sample of size 5000",
+         yaxis = list(title = "Distribution of snowfall"),
+         xaxis = list(title = "Snowfall values"))
 
 plot3
 ```
