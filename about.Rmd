@@ -1,20 +1,26 @@
 ---
-title: "About"
+title: "About-Mengran Ma"
 ---
 
 
-Mengran Ma
-Phone: +1(415) 767-9858 | Email: ma211@purdue.edu,
-Purdue University, 610 Purdue Mall, West Lafayette, IN, 47906
+**Mengran Ma**
+
+Phone: +1(415) 767-9858     |
+Email: mm5354@cumc.columbia.edu / ma211@purdue.edu       |
+50 Haven Avenue, G-123, New York, NY, 10032
 
 ##EDUCATION
 
-Purdue University-West Lafayette, IN, 47906                                                   08/2013-05/2018                                                                                                      
-  * Double BS expected in May 2018
-  * First Major: Biochemistry, Minor: Biological Sciences, Second Major: Applied Statistics
-  * Dean’s List: Every Semester from Fall 2013 to Spring 2017, Fall 2017
-  * Semester Honors: Fall 2013-Spring 2014, Spring 2015, Fall 2016, Spring 2017, Fall 2017
-  * Upper Level Graduate Courses: BCHM 56100 General Biochemistry I and BCHM 56200 General Biochemistry II,                   STAT51200 Applied Regression Analysis, STAT 51300 Statistical Quality Control, STAT 51400 Design of Experiments
+Columbia University Irving Medical Center (CUIMC)-New York City, NY, 10032          08/2018-06/2020
+* Mailman School of Public Health
+* Major: Biostatistics - Track: Statistical Genetics
+
+
+Purdue University-West Lafayette, IN, 47906                                         08/2013-05/2018         * Double Bachelor of Science (BS) degrees, May 2018
+* First Major: Biochemistry, Minor: Biological Sciences, Second Major: Applied Statistics
+* Dean’s List: Every Semester from Fall 2013 to Spring 2017, Fall 2017
+* Semester Honors: Fall 2013-Spring 2014, Spring 2015, Fall 2016, Spring 2017, Fall 2017
+* Upper Level Graduate Courses: BCHM 56100 General Biochemistry I and BCHM 56200 General Biochemistry II, STAT51200 Applied Regression Analysis, STAT 51300 Statistical Quality Control, STAT 51400 Design of Experiments
 
 ##RESEARCH PROJECTS
 
@@ -60,4 +66,4 @@ Student Ambassador of Purdue University Exploratory Studies                     
  
 ##TESTS & SKILLS
   * Language Skills: Chinese, proficient; English, proficient; French, elementary
-  * Computer Skills: SAS, Python, R language    
+  * Computer Skills: SAS, R language, Python   

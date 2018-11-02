@@ -32,7 +32,7 @@ New_noaa_data = mutate(New_noaa_data,
 ```
 
 
-Column {data-width=650}
+Column {data-width=600}
 -----------------------------------------------------------------------
 
 ### Chart A
@@ -61,7 +61,7 @@ plot1 = Jan_July_average %>%
 ggplotly(plot1)
 ```
 
-Column {data-width=350}
+Column {data-width=400}
 -----------------------------------------------------------------------
 
 ### Chart B
@@ -87,13 +87,14 @@ ggplotly(plot2)
 plot3 = New_noaa_data %>% 
   mutate(year = as.character(year)) %>% 
   filter(snow > 0 & snow < 100) %>%
-  ggplot(aes(x = snow, y = year)) + 
+  ggplot(aes(x = year, y = snow)) + 
     geom_boxplot(alpha = .5) +
     labs(
       title = "Distribution of snowfall among different years",
       x = "Snowfall values",
       y = "Distribution of snowfall within each year"
-    )
+    ) +
+      theme(axis.text.x = element_text(angle = 45, size = 6))
 ggplotly(plot3)
 ```
 
