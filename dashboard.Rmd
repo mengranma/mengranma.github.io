@@ -11,10 +11,7 @@ output:
 library(flexdashboard)
 library(tidyverse)
 library(p8105.datasets)
-library(ggridges)
-library(hexbin)
 library(plotly)
-library(patchwork)
 ```
 
 ```{r data_manipulating}
@@ -38,55 +35,40 @@ New_noaa_data = mutate(New_noaa_data,
 Column {data-width=600}
 -----------------------------------------------------------------------
 
-### Chart A
+### Average temperature for January in each station across years
 
 ```{r plotly_graph_1}
-Jan_July_average = New_noaa_data %>%
+Jan_average = New_noaa_data %>%
   select(id, prcp, snow, snwd, tmax, tmin, year, month, day) %>% 
-  filter(month == 1 | month == 7) %>% 
+  filter(month == 1) %>% 
   filter(!is.na(tmax) | !is.na(tmin))
 
-plot1 = Jan_July_average %>% 
-  sample_n(10000) %>% 
+plot1 = Jan_average %>% 
+  sample_n(100) %>% 
   group_by(id, year, month) %>%
-  summarize(mean_tempmax = mean(as.numeric(tmax), na.rm = TRUE)) %>%
-  ggplot(aes(x = year, y = mean_tempmax, color = id, alpha = 0.5)) + 
-    geom_point() + 
-    geom_line() +
-    labs(
-      title = "Average temperature in each station across years",
-      x = "Weather station ID",
-      y = "Mean Maxiumum temperature (°C)"
-      ) +
-  theme(axis.text.x = element_text(angle = 45, size = 6)) +
-  theme(legend.position = "bottom") +
-  facet_grid(~month)
+  summarize(mean_max_temp = mean(as.numeric(tmax), na.rm = TRUE)) %>%
+  mutate(text_label = str_c("Year: ", year, '\nAverage Maximum Temperature: ', mean_max_temp)) %>% 
+  plot_ly(x = ~year, y = ~mean_max_temp, type = 'bar', color = ~id, text = ~text_label) 
 
-ggplotly(plot1)
+plot1
 ```
 
 Column {data-width=400}
 -----------------------------------------------------------------------
 
-### Chart B
+### Temperature plot
 
 ```{r plotly_graph_2}
 # (i) tmax vs tmin for the full dataset
 plot2 = New_noaa_data %>% 
   sample_n(10000) %>%
-  ggplot(aes(x = tmax, y = tmin)) + 
-    geom_hex() +
-    labs(
-        title = "Temperature plot",
-        x = "Maximum temperature (°C)",
-        y = "Minimum temperature (°C)"
-      ) +
-  theme(axis.text.x = element_text(angle = 45, size = 6))
+  mutate(text_label = str_c("Maximum Temperature: ", tmax, '\nMinimum Temperature: ', tmin)) %>% 
+  plot_ly(x = ~tmax, y = ~tmin, type = "scatter", text = ~text_label, alpha = 0.5)
 
-ggplotly(plot2)
+plot2
 ```
 
-### Chart C
+### Distribution of snowfall among different years
 
 ```{r plotly_graph_3}
 plot3 = New_noaa_data %>% 
@@ -94,14 +76,8 @@ plot3 = New_noaa_data %>%
   filter(snow > 0 & snow < 100) %>%
   sample_n(5000) %>%
   mutate(year = fct_reorder(year, snow)) %>%
-  ggplot(aes(x = year, y = snow, color = year)) + 
-    geom_boxplot(alpha = .5) +
-    labs(
-      title = "Distribution of snowfall among different years",
-      x = "Snowfall values",
-      y = "Distribution of snowfall within each year"
-    ) +
-      theme(axis.text.x = element_text(angle = 45, size = 6))
-ggplotly(plot3)
+  plot_ly(x = ~year, y = ~snow, type = "box")
+
+plot3
 ```
 
