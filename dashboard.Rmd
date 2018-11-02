@@ -83,7 +83,7 @@ plot3 = New_noaa_data %>%
   sample_n(5000) %>%
   mutate(year = fct_reorder(year, snow)) %>%
   plot_ly(x = ~year, y = ~snow, type = "box") %>% 
-  layout(title = "Distribution of snowfall among different years for a random sample of size 5000",
+  layout(title = "Distribution of snowfall among different years for n=5000 sample",
          yaxis = list(title = "Distribution of snowfall"),
          xaxis = list(title = "Snowfall values"))
 
